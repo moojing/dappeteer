@@ -57,10 +57,7 @@ export const getSettingsSwitch = (
   text: string
 ): Promise<DappeteerElementHandle | null> =>
   page.waitForXPath(
-    [
-      `//span[contains(.,'${text}')]/parent::div/following-sibling::div/div/div/div`,
-      `//span[contains(.,'${text}')]/parent::div/following-sibling::div/div/label/div`,
-    ].join("|"),
+    `//span[contains(.,'${text}')]/ancestor::div[contains(@class, 'settings-page__content-item')]/following-sibling::div//label[contains(@class, 'toggle-button')]`,
     { visible: true }
   );
 
