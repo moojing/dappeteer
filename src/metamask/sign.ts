@@ -25,7 +25,11 @@ export const sign =
         await getElementByContent(page, "Sign", "button", { timeout: 2000 });
       }, 5);
 
-      await clickOnButton(page, "Got it");
+      try {
+        await clickOnButton(page, "Got it");
+      } catch (e) {
+        console.log("Got it button not found");
+      }
 
       await clickOnButton(page, "Sign");
 
